@@ -36,7 +36,7 @@ export default function Experience() {
                 className="absolute left-0 top-1.5 h-[15px] w-[15px] rounded-full border-2 border-accent bg-bg shadow-glow-sm"
                 aria-hidden="true"
               />
-              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 md:grid md:grid-cols-[1fr_auto]">
                 <h3 className="font-heading text-xl font-bold text-fg">
                   {entry.company}
                   <span className="text-muted"> · {entry.role}</span>
