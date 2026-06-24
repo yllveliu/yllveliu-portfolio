@@ -41,7 +41,7 @@ export default function Experience() {
                   {entry.company}
                   <span className="text-muted"> · {entry.role}</span>
                 </h3>
-                <span className="font-mono text-xs text-accent">
+                <span className="shrink-0 whitespace-nowrap font-mono text-xs text-accent">
                   {entry.period}
                 </span>
               </div>

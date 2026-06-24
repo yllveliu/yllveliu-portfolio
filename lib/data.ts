@@ -143,7 +143,7 @@ export const experience: Experience[] = [
   {
     company: "Green Group Kosova",
     role: "Web Developer & IT Administrator",
-    period: "Mar 2023 – Aug 2023",
+    period: "Mar 2023 – Jul 2024",
     description:
       "Designed and launched the company's bilingual B2B website from scratch. Managed internal IT infrastructure and systems.",
   },
