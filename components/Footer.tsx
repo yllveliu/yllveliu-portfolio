@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { footer } from "@/lib/data";
-import { GitHubIcon, LinkedInIcon } from "@/components/icons";
+import { GitHubIcon, LinkedInIcon, InstagramIcon } from "@/components/icons";
 
 export default function Footer() {
   return (
@@ -25,6 +25,15 @@ export default function Footer() {
             className="text-muted transition-colors duration-200 hover:text-accent"
           >
             <LinkedInIcon className="h-5 w-5" />
+          </Link>
+          <Link
+            href={footer.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="text-muted transition-colors duration-200 hover:text-accent"
+          >
+            <InstagramIcon className="h-5 w-5" />
           </Link>
         </div>
       </div>
