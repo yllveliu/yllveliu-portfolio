@@ -1,7 +1,9 @@
-import Link from "next/link";
-import type { ReactNode } from "react";
+"use client";
 
-// Shared, content-free UI primitives reused across sections.
+import Link from "next/link";
+import { useRef, useState } from "react";
+import { motion } from "framer-motion";
+import type { ReactNode } from "react";
 
 export function Tag({ children }: { children: ReactNode }) {
   return (
@@ -26,26 +28,53 @@ export function Button({
   external = false,
   ariaLabel,
 }: ButtonProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    setPos({
+      x: (e.clientX - cx) * 0.35,
+      y: (e.clientY - cy) * 0.35,
+    });
+  };
+
+  const handleMouseLeave = () => setPos({ x: 0, y: 0 });
+
   const base =
-    "group inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-medium tracking-wide transition-all duration-300 ease-out will-change-transform";
+    "group inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-medium tracking-wide transition-colors duration-300 ease-out will-change-transform";
 
   const styles =
     variant === "primary"
-      ? "bg-accent text-bg hover:scale-[1.04] hover:shadow-glow"
-      : "border border-accent/70 text-accent hover:bg-accent hover:text-bg hover:scale-[1.04]";
+      ? "bg-accent text-bg hover:shadow-glow"
+      : "border border-accent/70 text-accent hover:bg-accent hover:text-bg";
 
   const rel = external ? "noopener noreferrer" : undefined;
   const target = external ? "_blank" : undefined;
 
   return (
-    <Link
-      href={href}
-      aria-label={ariaLabel}
-      target={target}
-      rel={rel}
-      className={`${base} ${styles}`}
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      animate={{ x: pos.x, y: pos.y }}
+      whileTap={{ scale: 0.94 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      className="inline-block"
     >
-      {children}
-    </Link>
+      <Link
+        href={href}
+        aria-label={ariaLabel}
+        target={target}
+        rel={rel}
+        className={`${base} ${styles}`}
+      >
+        {children}
+      </Link>
+    </motion.div>
   );
 }

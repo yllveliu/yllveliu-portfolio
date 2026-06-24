@@ -2,13 +2,15 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { navLinks, site } from "@/lib/data";
 import { CloseIcon, MenuIcon } from "@/components/icons";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 200, damping: 30 });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -33,6 +35,11 @@ export default function Nav() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
+      {/* Scroll progress bar */}
+      <motion.div
+        style={{ scaleX, transformOrigin: "left" }}
+        className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent"
+      />
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:h-20 md:px-10">
         <Link
           href="#top"
