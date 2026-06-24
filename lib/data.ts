@@ -136,7 +136,7 @@ export const experience: Experience[] = [
   {
     company: "SD-IT Services LLC",
     role: "IT Specialist, Tier 2",
-    period: "Jul 2024 – Jul 2025",
+    period: "Jul 2024 – Aug 2025",
     description:
       "Tier 2 support for Foodhub, a live UK food ordering and POS platform. Handled production incidents, coordinated deployments, and managed Jira-based enterprise workflows.",
   },
