@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Yll Veliu — Portfolio
 
-## Getting Started
+Personal portfolio site for Yll Veliu, full-stack developer. Single-page,
+dark, with scroll-reveal animations and a custom desktop cursor.
 
-First, run the development server:
+**Live domain:** [yllveliu.com](https://yllveliu.com)
+
+## Tech stack
+
+- **Next.js 14** (App Router) + **React 18** + **TypeScript**
+- **Tailwind CSS 3** — design tokens defined in `tailwind.config.ts`
+- **Framer Motion** — scroll reveals, hero load sequence, mobile menu
+- Fonts via `next/font/google`: **Syne** (headings), **Inter** (body),
+  **JetBrains Mono** (tags / labels)
+- Devicon stack logos vendored locally in `public/icons` (no CDN dependency)
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run start    # serve the production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+app/
+  layout.tsx      fonts, metadata, global Cursor + Nav
+  page.tsx        composes every section in order
+  globals.css     base styles, scrollbar, cursor hide, overflow guard
+components/
+  Cursor.tsx      custom desktop cursor (dot + lagging ring)
+  Nav.tsx         fixed nav, scroll-aware bg, mobile overlay
+  Hero.tsx        hero + HeroShape.tsx (animated geometric element)
+  About.tsx       bio + tech-stack icon grid
+  Projects.tsx    2x2 project cards
+  Experience.tsx  vertical timeline
+  Skills.tsx      grouped tag cloud
+  Contact.tsx     CTA section
+  Footer.tsx      footer + social links
+  Reveal.tsx      reusable scroll-reveal wrapper (Framer Motion useInView)
+  SectionLabel.tsx, ui.tsx (Button, Tag), icons.tsx
+lib/
+  data.ts         ALL site content — edit copy here, not in components
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Editing content
 
-## Learn More
+All text, projects, experience, and skills live in [`lib/data.ts`](lib/data.ts).
+Components never hardcode copy — change it there and every section updates.
 
-To learn more about Next.js, take a look at the following resources:
+## Design tokens
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Token   | Value     | Use                     |
+| ------- | --------- | ----------------------- |
+| bg      | `#0a0a0a` | page background         |
+| surface | `#111111` | cards                   |
+| line    | `#1e1e1e` | borders                 |
+| fg      | `#f0f0f0` | primary text            |
+| muted   | `#888888` | secondary text          |
+| accent  | `#00D8FF` | links, highlights, CTAs |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploy (Vercel)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push this repo to GitHub.
+2. Import it at [vercel.com/new](https://vercel.com/new) — framework is
+   auto-detected as Next.js, no extra config needed.
+3. Add the custom domain `yllveliu.com` in the project's Domains settings.
