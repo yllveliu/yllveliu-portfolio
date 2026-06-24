@@ -12,15 +12,51 @@ export default function Hero() {
       id="top"
       className="relative flex min-h-screen items-center overflow-hidden bg-bg pt-24 md:pt-0"
     >
-      {/* Mobile background shape — absolute, right side, behind text */}
+      {/* Mobile: large centered shape behind text */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.85 }}
+        initial={{ opacity: 0, scale: 0.7 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-        className="pointer-events-none absolute right-[-40px] top-1/2 -translate-y-1/2 opacity-40 md:hidden"
-        style={{ width: 220, height: 220 }}
+        transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:hidden"
+        style={{ width: 380, height: 380 }}
       >
         <HeroShape />
+      </motion.div>
+
+      {/* Mobile: floating particles */}
+      {[
+        { x: "10%", y: "15%", size: 4, delay: 0, duration: 3.5 },
+        { x: "85%", y: "20%", size: 3, delay: 0.5, duration: 4 },
+        { x: "70%", y: "45%", size: 6, delay: 0.2, duration: 5 },
+        { x: "15%", y: "60%", size: 3, delay: 0.8, duration: 3.8 },
+        { x: "90%", y: "65%", size: 4, delay: 0.3, duration: 4.5 },
+        { x: "50%", y: "10%", size: 5, delay: 0.6, duration: 4.2 },
+        { x: "30%", y: "80%", size: 3, delay: 0.1, duration: 3.2 },
+        { x: "75%", y: "80%", size: 4, delay: 0.9, duration: 5.5 },
+        { x: "5%",  y: "35%", size: 3, delay: 0.4, duration: 4.8 },
+        { x: "60%", y: "25%", size: 5, delay: 0.7, duration: 3.6 },
+        { x: "40%", y: "70%", size: 3, delay: 0.2, duration: 5.2 },
+        { x: "20%", y: "90%", size: 4, delay: 0.5, duration: 4.1 },
+      ].map((p, i) => (
+        <motion.div
+          key={i}
+          className="pointer-events-none absolute rounded-full bg-accent"
+          style={{ left: p.x, top: p.y, width: p.size, height: p.size }}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: [0, 0.7, 0.4, 0.7], scale: 1, y: [0, -12, 0] }}
+          transition={{ duration: p.duration, delay: p.delay, repeat: Infinity, ease: "easeInOut" }}
+        />
+      ))}
+
+      {/* Mobile: cyan glow behind name */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, delay: 0.4 }}
+        className="pointer-events-none absolute left-0 top-[38%] -translate-y-1/2"
+        style={{ width: "100%", height: 220 }}
+      >
+        <div className="h-full w-full bg-accent/10 blur-[80px]" />
       </motion.div>
 
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 pb-16 pl-6 md:grid-cols-[1.1fr_0.9fr] md:gap-8 md:pb-0 md:pl-[10vw] md:pr-[6vw]">
@@ -36,23 +72,23 @@ export default function Hero() {
           </motion.p>
 
           <h1 className="font-heading text-[56px] font-bold leading-[0.95] tracking-tight text-fg md:text-[96px]">
-            {hero.nameWords.map((word, i) => (
-              <span
-                key={word}
-                className="mr-4 inline-block overflow-hidden align-bottom"
-              >
-                <motion.span
-                  initial={{ y: "110%" }}
-                  animate={{ y: "0%" }}
-                  transition={{
-                    duration: 0.7,
-                    delay: 0.3 + i * 0.1,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="inline-block"
-                >
-                  {word}
-                </motion.span>
+            {hero.nameWords.map((word, wi) => (
+              <span key={word} className="mr-4 inline-block">
+                {word.split("").map((char, ci) => (
+                  <motion.span
+                    key={ci}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.3,
+                      delay: 0.3 + wi * (word.length * 0.06) + ci * 0.06,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className="inline-block"
+                  >
+                    {char}
+                  </motion.span>
+                ))}
               </span>
             ))}
           </h1>
@@ -95,18 +131,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll hint */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
-      >
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted">
-          Scroll
-        </span>
-        <span className="h-10 w-px bg-gradient-to-b from-accent to-transparent" />
-      </motion.div>
     </section>
   );
 }
