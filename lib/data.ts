@@ -25,16 +25,16 @@ export const hero = {
   tag: "Full-Stack Developer · Kosovo",
   nameWords: ["Yll", "Veliu"],
   subtitle:
-    "I build production-ready web applications — from backend APIs to polished frontends.",
+    "I ship full-stack products. Database design to deployed frontends. Real users, real scale.",
   primaryCta: { label: "View My Work", href: "#work" },
   secondaryCta: { label: "Get In Touch", href: "#contact" },
 };
 
 export const about = {
   label: "About",
-  heading: "Building full products, not just features.",
-  bio: "I'm a full-stack developer from Kosovo, currently interning at Genpact on a US-based enterprise project. I build complete web products — from database schemas to deployed frontends. I independently launched CalorieBot AI, a live SaaS with paying subscribers, handling everything from architecture to payments.",
-  detail: "📍 Gjilan, Kosovo · Open to remote opportunities",
+  heading: "I build products, not just code.",
+  bio: "Full-stack developer from Kosovo working on a US-based enterprise field-service platform at Genpact. I own projects end-to-end: architecture, backend, frontend, and deployment. Outside of work I launched CalorieBot AI independently, a live SaaS with paying subscribers, built and shipped solo from zero.",
+  detail: "Gjilan, Kosovo · Open to remote",
 };
 
 // Stack icon grid in the About section. Icons are vendored locally under
@@ -67,6 +67,7 @@ export type Project = {
   live?: string;
   github?: string;
   image?: string;
+  imageFit?: "cover" | "contain";
 };
 
 export const projects: Project[] = [
@@ -74,7 +75,7 @@ export const projects: Project[] = [
     number: "01",
     name: "CalorieBot AI",
     description:
-      "AI-powered WhatsApp calorie tracker. Live SaaS with paying subscribers.",
+      "SaaS calorie tracker running entirely in WhatsApp. Send a meal photo or text and get instant calories, protein, carbs, and fat. Live with paying subscribers.",
     tags: ["Next.js", "NestJS", "PostgreSQL", "OpenAI", "Stripe", "WhatsApp API"],
     live: "https://caloriebotai.com",
     image: "/projects/caloriebot.png",
@@ -83,7 +84,7 @@ export const projects: Project[] = [
     number: "02",
     name: "FieldRoute",
     description:
-      "Field-service dispatch app. Job scheduling, technician tracking, parts inventory.",
+      "Multi-role field-service platform with AI job classification. Customers submit requests, AI categorises them, dispatchers assign technicians, technicians track and close jobs.",
     tags: ["React", "TypeScript", "FastAPI", "PostgreSQL", "Docker"],
     live: "https://fieldroute.vercel.app",
     github: "https://github.com/yllveliu/fieldroute",
@@ -93,7 +94,7 @@ export const projects: Project[] = [
     number: "03",
     name: "Project Management System",
     description:
-      "Full-stack Kanban app built as diploma thesis. Auth, tasks, REST API.",
+      "Full-stack Kanban platform with role-based access, real-time task tracking, comments, and activity logs. REST API backend with JWT auth.",
     tags: ["React", "TypeScript", "FastAPI", "PostgreSQL"],
     live: "https://project-management-system-ochre-ten.vercel.app",
     github: "https://github.com/yllveliu/project-management-system",
@@ -103,10 +104,11 @@ export const projects: Project[] = [
     number: "04",
     name: "Green Group Kosova",
     description:
-      "Official B2B website for a Kosovo company. Responsive, production live.",
+      "Production B2B website for a Kosovo-based company. Bilingual, fully responsive, deployed and live.",
     tags: ["React", "TypeScript", "Tailwind CSS"],
     live: "https://www.greengroupkosova.com",
     image: "/projects/greengroupkosova.png",
+    imageFit: "contain" as const,
   },
 ];
 
@@ -126,24 +128,24 @@ export type Experience = {
 export const experience: Experience[] = [
   {
     company: "Genpact",
-    role: "Full-Stack Developer Intern",
+    role: "Full-Stack Developer",
     period: "Mar 2026 – Jul 2026",
     description:
-      "Built React/TypeScript UI and FastAPI backend for a US-based field-service platform. Agile team, PR-based Git workflow, international distributed team.",
+      "Shipping React/TypeScript frontend and FastAPI backend on a US enterprise field-service platform. Working in an Agile team with PR-based workflow across an international distributed team.",
   },
   {
     company: "SD-IT Services LLC",
-    role: "IT Specialist Tier 2",
+    role: "IT Specialist, Tier 2",
     period: "Jul 2024 – Jul 2025",
     description:
-      "Tier 2 support for Foodhub (UK), a live POS and food ordering platform. Production deployments, incident management, Jira-based enterprise workflows.",
+      "Tier 2 support for Foodhub, a live UK food ordering and POS platform. Handled production incidents, coordinated deployments, and managed Jira-based enterprise workflows.",
   },
   {
     company: "Green Group Kosova",
-    role: "IT Admin & Web Dev",
+    role: "Web Developer & IT Administrator",
     period: "Mar 2023 – Aug 2023",
     description:
-      "Built the company website and managed IT infrastructure for a B2B company.",
+      "Designed and launched the company's bilingual B2B website from scratch. Managed internal IT infrastructure and systems.",
   },
 ];
 
@@ -184,13 +186,14 @@ export const contact = {
   label: "Contact",
   heading: "Let's build something together.",
   subtext:
-    "Open to full-stack roles, freelance projects, and collaborations.",
+    "Available for full-stack roles and freelance projects. Response within 24 hours.",
   email: site.email,
   linkedin: site.linkedin,
 };
 
 export const footer = {
-  text: "Yll Veliu · Built with Next.js & Tailwind · 2026",
+  text: "Yll Veliu · 2026",
   github: site.github,
   linkedin: site.linkedin,
+  instagram: "https://www.instagram.com/yll.veliu/",
 };
