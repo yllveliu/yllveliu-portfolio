@@ -115,6 +115,13 @@ export default function Hero() {
             <Button href={hero.secondaryCta.href} variant="secondary">
               {hero.secondaryCta.label}
             </Button>
+            <a
+              href="/Yll_Veliu_CV.pdf"
+              download
+              className="font-mono text-sm text-muted transition-colors duration-200 hover:text-accent"
+            >
+              Resume ↓
+            </a>
           </motion.div>
         </div>
 

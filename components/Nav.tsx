@@ -64,6 +64,15 @@ export default function Nav() {
           ))}
         </ul>
 
+        {/* Desktop Resume button */}
+        <a
+          href="/Yll_Veliu_CV.pdf"
+          download
+          className="hidden md:inline-flex items-center gap-2 rounded-full border border-accent/70 px-4 py-1.5 font-mono text-xs text-accent transition-all duration-200 hover:bg-accent hover:text-bg"
+        >
+          Resume ↓
+        </a>
+
         {/* Mobile toggle */}
         <button
           type="button"
