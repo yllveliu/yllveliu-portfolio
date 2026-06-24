@@ -4,6 +4,7 @@ import "./globals.css";
 import { site } from "@/lib/data";
 import Cursor from "@/components/Cursor";
 import Nav from "@/components/Nav";
+import MobileContactFab from "@/components/MobileContactFab";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -80,6 +81,7 @@ export default function RootLayout({
         <Cursor />
         <Nav />
         {children}
+        <MobileContactFab />
       </body>
     </html>
   );
