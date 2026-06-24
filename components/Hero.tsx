@@ -118,7 +118,7 @@ export default function Hero() {
             <a
               href="/Yll_Veliu_CV.pdf"
               download
-              className="font-mono text-sm text-muted transition-colors duration-200 hover:text-accent"
+              className="hidden md:inline font-mono text-sm text-muted transition-colors duration-200 hover:text-accent"
             >
               Resume ↓
             </a>
